@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>WOD Generator</title>
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body class="container">
+	<h2>WOD con {{title}}</h2>
+	<div class="row">
+		<div class="col-sm-8" style="text-align: center;">
+			<button id="wodBtn" type="button" class="btn btn-info" style="width: 60%; margin: 5px auto;"><a href="/daily"></a>Generate WOD</button>
+			
+			<div id="wodList" style="width: 60%; margin: 5px auto; border: 1px solid black;"></div>
+		</div>
+	</div>
+	{{#each wods}}
+        <li>{{this.wod}}</li>
+    {{/each}}
+	<script type="text/javascript">
+/*
+		var wods = "{{{wods}}}";
+		console.log('WODS ' + wods);
+*/
+		var decodedJson = decodeURIComponent("{{{wods}}}");
+  		var wods = JSON.parse(decodedJson);
+
+  		function getRandomWod(){
+  			var wod = wods[Math.floor(Math.random()*wods.length)].wod;
+	  		var wodArray = wod.split('/');
+	  		var wodText = wodArray[0];
+	  		for (var i = 1; i < wodArray.length; i++) {
+	  			wodText += '<br>' + wodArray[i];
+	  		}
+	  		return wodText;
+  		}
+
+		document.getElementById('wodBtn').addEventListener('click', function(){
+			//clear content
+			document.getElementById('wodList').innerHTML = '';
+
+			//pick random exercise
+			var wodText = getRandomWod();
+			document.getElementById('wodList').innerHTML = wodText;
+		});
+	</script>
+</body>
+</html>
