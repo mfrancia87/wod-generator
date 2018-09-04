@@ -16,6 +16,10 @@ router.get('/daily', function (req, res) {
     res.render('daily.hbs', { title: 'daily' });
 });
 
+router.get('/timer', function (req, res) {
+    res.render('timer.hbs', { title: 'clock' });
+});
+
 router.get('/error', function (req, res) {
     res.render('error.hbs');
 });
