@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
-	
+
 	var countup, countdown;
+
+	var beep = document.getElementById('timer-beep');
 
 	function startTimerUp(totalMinutes, display) {
 		var currentTime = document.getElementById('timerScreen').innerHTML;
@@ -9,6 +11,9 @@ document.addEventListener("DOMContentLoaded", function() {
 		var seconds = parseInt(currentTime[1], 10);
 
 	    countup = setInterval(function () {
+	    	
+	    	seconds == 0 && beep.play();
+
 	    	var min = minutes < 10 ? "0" + minutes : minutes;
 	    	var sec = seconds < 10 ? "0" + seconds : seconds;
 	    	if (parseInt(minutes, 10) == totalMinutes) {
@@ -38,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	        display.textContent = min + ":" + sec;
 
 	        if(seconds <= 0){
+	        	beep.play();
 	        	if(parseInt(minutes) == 0){
 	        		display.textContent = "00:00";
 	        		document.getElementById('pauseBtn').style.display = 'none';
