@@ -15,40 +15,74 @@
 	<div class="row">
 		<div class="col-sm-8" style="text-align: center;">
 			<button id="EMOMtimer" type="button" class="btn btn-info" style="width: 60%; margin: 5px auto;">EMOM</button>
-			<button id="regularTimer" type="button" class="btn btn-info" style="width: 60%; margin: 5px auto;">For Time</button>
-			
-				<div id="timerForm" class="form-group" style="display: none;">
-					<form class="container">
-						<div class="form-check form-check-inline">
-						  <label class="form-check-label">
-						    <input class="form-check-input" type="radio" name="counter" id="countUp" value="up"> Count Up
-						  </label>
-						</div>
-						<div class="form-check form-check-inline">
-						  <label class="form-check-label">
-						    <input class="form-check-input" type="radio" name="counter" id="countDown" value="down"> Count Down
-						  </label>
-						</div>
+			<button id="AMRAPtimer" type="button" class="btn btn-info" style="width: 60%; margin: 5px auto;">AMRAP</button>
+			<button id="forTimeTimer" type="button" class="btn btn-info" style="width: 60%; margin: 5px auto;">For Time</button>
 
-						<div class="form-group row">
-							<label class="col-xs-6 col-form-label" for="min">Minutes:</label>
-							<div class="col-xs-6">
-								<input type="number" class="form-control" id="min">
-							</div>
+			<div id="emomTimerForm" class="form-group" style="display: none;">
+				<audio id="timer-beep">
+					<source src="/audio/beep.mp3"/>
+				</audio>
+				<form class="container">
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="radio" name="counter" id="countUp" value="up"> Count Up
+					  </label>
+					</div>
+					<div class="form-check form-check-inline">
+					  <label class="form-check-label">
+					    <input class="form-check-input" type="radio" name="counter" id="countDown" value="down"> Count Down
+					  </label>
+					</div>
+					<div class="form-group row">
+						<label class="col-xs-6 col-form-label" for="min">Minutes:</label>
+						<div class="col-xs-6">
+							<input type="number" class="form-control min">
 						</div>
-<audio id="timer-beep">
-	<source src="/audio/beep.mp3"/>
-</audio>
-  						<div class="form-group row">
-  							<button id="startBtn" type="button" class="btn btn-info float-left" style="width: 40%;">START</button>
-  							<button id="pauseBtn" type="button" class="btn btn-warning float-left" style="width: 40%; display: none;">PAUSE</button>
-							<button id="stopBtn" type="button" class="btn btn-danger float-right" style="width: 40%;">STOP</button>
-  						</div>
-						
-					</form>
+					</div>
+				</form>
+			</div>
+
+			<div id="amrapTimerForm" class="form-group" style="display: none;">
+				<audio id="timer-beep">
+					<source src="/audio/beep.mp3"/>
+				</audio>
+				<form class="container">
+					<div class="form-group row">
+						<label class="col-xs-6 col-form-label" for="min">Minutes:</label>
+						<div class="col-xs-6">
+							<input type="number" class="form-control min">
+						</div>
+					</div>		
+				</form>
+			</div>
+
+			<div id="forTimeTimerForm" class="form-group" style="display: none;">
+				<audio id="timer-beep">
+					<source src="/audio/beep.mp3"/>
+				</audio>
+				<form class="container">
+					<div class="form-group row">
+						<label class="col-xs-6 col-form-label" for="min">Minutes:</label>
+						<div class="col-xs-6">
+							<input type="number" class="form-control min">
+						</div>
+					</div>		
+				</form>
+			</div>
+
+			<div id="timer" style="display: none;">
+				<form class="container" id="controlButtons">
+					<div class="form-group row">
+						<button id="startBtn" type="button" class="btn btn-info float-left" style="width: 40%;">START</button>
+						<button id="pauseBtn" type="button" class="btn btn-warning float-left" style="width: 40%; display: none;">PAUSE</button>
+						<button id="stopBtn" type="button" class="btn btn-danger float-right" style="width: 40%;">STOP</button>
+					</div>
+				</form>
+				<div id="timerScreen" style="width: 60%; height: 40px; margin: 5px auto; border: 1px solid black;">
+					00:00
 				</div>
+			</div>
 
-			<div id="timerScreen" style="width: 60%; height: 40px; margin: 5px auto; border: 1px solid black; display: none;">00:00</div>
 		</div>
 	</div>
 </body>
